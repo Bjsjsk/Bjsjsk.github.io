@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages 测试 - 独立游戏开发者</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6e5494;
+            --secondary: #4078c0;
+            --accent: #bd2c00;
+            --light: #f5f5f5;
+            --dark: #24292e;
+            --gray: #6a737d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .github-icon {
+            margin-top: 20px;
+            font-size: 3.5rem;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card h2 i {
+            font-size: 1.5rem;
+        }
+        
+        .features {
+            margin: 40px 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .test-area {
+            background: #f0f8ff;
+            border: 2px dashed var(--secondary);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+        
+        .test-area h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .color-boxes {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .color-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        
+        .primary-color {
+            background-color: var(--primary);
+        }
+        
+        .secondary-color {
+            background-color: var(--secondary);
+        }
+        
+        .accent-color {
+            background-color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: #d9534f;
+        }
+        
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: var(--gray);
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+            border: 1px solid #2ecc71;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .color-boxes {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="github-icon">
+                <i class="fab fa-github"></i>
+            </div>
+            <h1>GitHub Pages 测试页面</h1>
+            <p class="subtitle">这是一个用于测试GitHub Pages功能的简单网页。如果你是独立游戏开发者，可以用它作为你游戏网站的原型。</p>
+            <div id="pageStatus" class="status success">
+                <i class="fas fa-check-circle"></i>
+                <span>页面加载成功！GitHub Pages 运行正常。</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content">
+            <div class="card">
+                <h2><i class="fas fa-info-circle"></i> 页面信息</h2>
+                <p>这是一个简单的测试页面，用于验证你的GitHub Pages是否配置正确。</p>
+                <p>如果你是独立游戏开发者，可以基于此页面创建你的游戏官网。</p>
+                <p>此页面包含以下测试元素：</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 响应式设计（适应手机和电脑）</li>
+                    <li><i class="fas fa-check"></i> 交互式按钮和元素</li>
+                    <li><i class="fas fa-check"></i> 颜色和样式测试</li>
+                    <li><i class="fas fa-check"></i> JavaScript功能测试</li>
+                    <li><i class="fas fa-check"></i> 字体图标</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-gamepad"></i> 游戏开发者信息</h2>
+                <p>如果你正在开发独立游戏，GitHub Pages是展示游戏的好地方。</p>
+                <p>你可以在这里添加：</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-images"></i> 游戏截图和视频</li>
+                    <li><i class="fas fa-newspaper"></i> 开发日志和更新</li>
+                    <li><i class="fas fa-download"></i> 游戏Demo下载链接</li>
+                    <li><i class="fas fa-link"></i> Steam商店页面链接</li>
+                    <li><i class="fas fa-users"></i> 社区链接（Discord、QQ群等）</li>
+                </ul>
+                <a href="https://store.steampowered.com" class="btn" target="_blank">示例Steam链接</a>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-code"></i> GitHub Pages使用步骤</h2>
+                <p>要使用此页面测试GitHub Pages：</p>
+                <ol class="feature-list">
+                    <li><i class="fas fa-1"></i> 复制此HTML代码到你的GitHub仓库</li>
+                    <li><i class="fas fa-2"></i> 文件命名为 <code>index.html</code></li>
+                    <li><i class="fas fa-3"></i> 在仓库设置中开启GitHub Pages功能</li>
+                    <li><i class="fas fa-4"></i> 访问 <code>username.github.io/repository-name</code></li>
+                </ol>
+                <p>查看下面的测试区域，验证功能是否正常。</p>
+                <button id="testButton" class="btn btn-secondary">点击测试交互功能</button>
+            </div>
+        </section>
+        
+        <section class="test-area">
+            <h3>功能测试区</h3>
+            <p>这个区域用于测试页面功能是否正常。</p>
+            
+            <div class="color-boxes">
+                <div class="color-box primary-color">主色调</div>
+                <div class="color-box secondary-color">次要色</div>
+                <div class="color-box accent-color">强调色</div>
+            </div>
+            
+            <p>当前时间: <span id="currentTime">正在加载...</span></p>
+            <p>页面加载时间: <span id="loadTime"></span></p>
+            
+            <div class="code-block">
+                // 这是一个简单的代码示例<br>
+                function testGitHubPages() {<br>
+                &nbsp;&nbsp;console.log("GitHub Pages测试成功!");<br>
+                &nbsp;&nbsp;return "一切正常";<br>
+                }
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button id="colorChangeButton" class="btn">切换背景色</button>
+                <button id="addFeatureButton" class="btn">添加测试项目</button>
+            </div>
+            
+            <div id="dynamicContent" style="margin-top: 20px;"></div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2023 独立游戏开发者 GitHub Pages 测试页面</p>
+        <p>此页面仅用于测试目的。你可以自由修改和使用它。</p>
+        <p>页面最后更新: <span id="lastUpdated"></span></p>
+    </footer>
+    
+    <script>
+        // 页面加载时执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 显示当前时间
+            function updateTime() {
+                const now = new Date();
+                document.getElementById('currentTime').textContent = now.toLocaleString('zh-CN');
+            }
+            
+            // 更新页面加载时间
+            const loadTime = new Date();
+            document.getElementById('loadTime').textContent = loadTime.toLocaleTimeString('zh-CN');
+            
+            // 更新最后修改时间
+            document.getElementById('lastUpdated').textContent = document.lastModified;
+            
+            // 初始化时间
+            updateTime();
+            setInterval(updateTime, 1000);
+            
+            // 测试按钮功能
+            document.getElementById('testButton').addEventListener('click', function() {
+                alert('交互功能测试成功！GitHub Pages 运行正常。');
+                document.getElementById('pageStatus').innerHTML = 
+                    '<i class="fas fa-check-circle"></i> <span>交互测试成功！所有功能正常。</span>';
+            });
+            
+            // 颜色切换按钮
+            let colorIndex = 0;
+            const colors = ['#f0f8ff', '#f9f9f9', '#fff0f5', '#f0fff0'];
+            document.getElementById('colorChangeButton').addEventListener('click', function() {
+                const testArea = document.querySelector('.test-area');
+                colorIndex = (colorIndex + 1) % colors.length;
+                testArea.style.backgroundColor = colors[colorIndex];
+                
+                // 显示当前颜色
+                const colorNames = ['浅天蓝', '浅灰', '淡粉', '蜜瓜绿'];
+                document.getElementById('dynamicContent').innerHTML = 
+                    `<p style="color: var(--accent);"><i class="fas fa-palette"></i> 背景色已切换为: ${colorNames[colorIndex]}</p>`;
+            });
+            
+            // 添加功能按钮
+            document.getElementById('addFeatureButton').addEventListener('click', function() {
+                const features = [
+                    'GitHub Pages 托管测试通过',
+                    'JavaScript 功能测试通过',
+                    'CSS 样式测试通过',
+                    '响应式设计测试通过',
+                    '交互元素测试通过'
+                ];
+                
+                const randomFeature = features[Math.floor(Math.random() * features.length)];
+                const featureList = document.querySelector('.feature-list');
+                
+                const newItem = document.createElement('li');
+                newItem.innerHTML = `<i class="fas fa-star"></i> ${randomFeature}`;
+                featureList.appendChild(newItem);
+                
+                document.getElementById('dynamicContent').innerHTML += 
+                    `<p><i class="fas fa-plus-circle"></i> 已添加测试项目: "${randomFeature}"</p>`;
+            });
+            
+            // 控制台输出测试信息
+            console.log("GitHub Pages 测试页面加载完成");
+            console.log("页面URL: " + window.location.href);
+            console.log("用户代理: " + navigator.userAgent);
+        });
+    </script>
+</body>
+</html>
